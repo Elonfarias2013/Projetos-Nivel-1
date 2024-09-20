@@ -1,0 +1,239 @@
+
+<html><head><base href="https://websimcreationengine.com/form/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulário Tecnológico Interativo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    width: 90%;
+    max-width: 500px;
+    transform: translateY(50px);
+    opacity: 0;
+    animation: slideUp 0.8s ease-out forwards;
+  }
+
+  @keyframes slideUp {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+
+  .form-group {
+    margin-bottom: 25px;
+    position: relative;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-weight: 300;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+
+  .technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tech-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tech-btn.active {
+    background: #4CAF50;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    background: #45a049;
+  }
+
+  .success-message {
+    display: none;
+    color: #4CAF50;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: 700;
+  }
+
+  #particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+</style>
+</head>
+<body>
+<div id="particles-js"></div>
+<div class="container">
+  <h1>Formulário Tecnológico</h1>
+  <form id="techForm">
+    <div class="form-group">
+      <label for="name">Nome:</label>
+      <input type="text" id="name" required>
+    </div>
+    <div class="form-group">
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" required>
+    </div>
+    <div class="form-group">
+      <label for="role">Função:</label>
+      <select id="role" required>
+        <option value="">Selecione uma opção</option>
+        <option value="developer">Desenvolvedor</option>
+        <option value="designer">Designer</option>
+        <option value="manager">Gerente de Projeto</option>
+        <option value="other">Outro</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Tecnologias favoritas:</label>
+      <div class="technologies">
+        <button type="button" class="tech-btn" data-tech="javascript">JavaScript</button>
+        <button type="button" class="tech-btn" data-tech="python">Python</button>
+        <button type="button" class="tech-btn" data-tech="react">React</button>
+        <button type="button" class="tech-btn" data-tech="nodejs">Node.js</button>
+        <button type="button" class="tech-btn" data-tech="angular">Angular</button>
+        <button type="button" class="tech-btn" data-tech="vue">Vue.js</button>
+      </div>
+    </div>
+    <button type="submit">Enviar</button>
+  </form>
+  <p class="success-message">Formulário enviado com sucesso!</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('techForm');
+  const techButtons = document.querySelectorAll('.tech-btn');
+  const successMessage = document.querySelector('.success-message');
+
+  // Configuração das partículas
+  particlesJS('particles-js', {
+    particles: {
+      number: { value: 80, density: { enable: true, value_area: 800 } },
+      color: { value: "#ffffff" },
+      shape: { type: "circle" },
+      opacity: { value: 0.5, random: false },
+      size: { value: 3, random: true },
+      line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.4, width: 1 },
+      move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+      modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+    },
+    retina_detect: true
+  });
+
+  // Animação dos campos do formulário
+  const formGroups = document.querySelectorAll('.form-group');
+  formGroups.forEach((group, index) => {
+    group.style.opacity = '0';
+    group.style.transform = 'translateY(20px)';
+    setTimeout(() => {
+      group.style.transition = 'all 0.5s ease';
+      group.style.opacity = '1';
+      group.style.transform = 'translateY(0)';
+    }, 100 * (index + 1));
+  });
+
+  // Lógica para os botões de tecnologia
+  techButtons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+  });
+
+  // Lógica para envio do formulário
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const role = document.getElementById('role').value;
+    const selectedTechs = Array.from(document.querySelectorAll('.tech-btn.active')).map(btn => btn.dataset.tech);
+
+    // Aqui você pode adicionar a lógica para enviar os dados para um servidor
+    console.log('Dados do formulário:', { name, email, role, selectedTechs });
+
+    // Exibir mensagem de sucesso
+    successMessage.style.display = 'block';
+    form.reset();
+    techButtons.forEach(btn => btn.classList.remove('active'));
+
+    // Ocultar mensagem de sucesso após 3 segundos
+    setTimeout(() => {
+      successMessage.style.display = 'none';
+    }, 3000);
+  });
+});
+</script>
+</body></html>
