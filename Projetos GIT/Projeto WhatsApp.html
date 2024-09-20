@@ -1,0 +1,143 @@
+<html><head><base href="https://whatsappclone.com/conversation/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp - Conversa sobre Vaga Front-End</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #E5DDD5;
+        margin: 0;
+        padding: 0;
+    }
+    .chat-container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 1px 1px 0 rgba(0,0,0,.06),0 2px 5px 0 rgba(0,0,0,.2);
+    }
+    .chat-header {
+        background-color: #075E54;
+        color: #fff;
+        padding: 10px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .chat-body {
+        padding: 20px;
+        height: 70vh;
+        overflow-y: scroll;
+    }
+    .message {
+        max-width: 65%;
+        padding: 8px 12px;
+        margin-bottom: 10px;
+        border-radius: 7.5px;
+        position: relative;
+        word-wrap: break-word;
+    }
+    .message.received {
+        background-color: #fff;
+        float: left;
+        border-top-left-radius: 0px;
+    }
+    .message.sent {
+        background-color: #DCF8C6;
+        float: right;
+        border-top-right-radius: 0px;
+    }
+    .clear {
+        clear: both;
+    }
+    .time {
+        font-size: 0.75em;
+        color: #999;
+        margin-top: 5px;
+        float: right;
+    }
+</style>
+</head>
+<body>
+<div class="chat-container">
+    <div class="chat-header">
+        <h2>Recrutador</h2>
+    </div>
+    <div class="chat-body">
+        <div class="message received">
+            Olá! Tudo bem? Estou recrutando para uma vaga de Front-End Jr. Você pode me dizer quais linguagens você conhece?
+            <div class="time">10:30</div>
+        </div>
+        <div class="clear"></div>
+        
+        <div class="message sent">
+            Olá! Tudo ótimo, obrigado! Claro, posso sim. Para Front-End Jr., as principais linguagens que conheço são HTML, CSS e JavaScript.
+            <div class="time">10:32</div>
+        </div>
+        <div class="clear"></div>
+        
+        <div class="message received">
+            Excelente! Pode me falar um pouco mais sobre cada uma delas?
+            <div class="time">10:33</div>
+        </div>
+        <div class="clear"></div>
+        
+        <div class="message sent">
+            Claro! HTML (HyperText Markup Language) é usado para estruturar o conteúdo da página. CSS (Cascading Style Sheets) é usado para estilizar e formatar o layout. E JavaScript é a linguagem de programação que torna a página interativa e dinâmica.
+            <div class="time">10:36</div>
+        </div>
+        <div class="clear"></div>
+        
+        <div class="message received">
+            Muito bom! E você conhece algum framework ou biblioteca popular para Front-End?
+            <div class="time">10:38</div>
+        </div>
+        <div class="clear"></div>
+        
+        <div class="message sent">
+            Sim! Para Front-End Jr., é comum começar com React.js, que é uma biblioteca JavaScript muito popular para construir interfaces de usuário. Também tenho conhecimentos básicos de Vue.js e estou estudando Angular.
+            <div class="time">10:41</div>
+        </div>
+        <div class="clear"></div>
+        
+        <div class="message received">
+            Impressionante! Você parece ter uma base sólida. Vou encaminhar seu perfil para a próxima etapa do processo seletivo. Obrigado pelo seu tempo!
+            <div class="time">10:43</div>
+        </div>
+        <div class="clear"></div>
+        
+        <div class="message sent">
+            Ótimo! Muito obrigado pela oportunidade. Estou ansioso para as próximas etapas. Tenha um ótimo dia!
+            <div class="time">10:45</div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const chatBody = document.querySelector('.chat-body');
+    chatBody.scrollTop = chatBody.scrollHeight;
+    
+    function addNewMessage(content, type) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${type}`;
+        messageDiv.innerHTML = content + '<div class="time">' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) + '</div>';
+        chatBody.appendChild(messageDiv);
+        const clearDiv = document.createElement('div');
+        clearDiv.className = 'clear';
+        chatBody.appendChild(clearDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    // Exemplo de como adicionar novas mensagens (descomente para testar):
+    // setTimeout(() => {
+    //     addNewMessage("Você tem alguma experiência com desenvolvimento responsivo?", "received");
+    // }, 3000);
+    
+    // setTimeout(() => {
+    //     addNewMessage("Sim, tenho experiência em criar layouts responsivos usando media queries no CSS e frameworks como Bootstrap.", "sent");
+    // }, 6000);
+});
+</script>
+</body>
+</html>
